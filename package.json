@@ -1,0 +1,23 @@
+{
+  "name": "sme-assist-ai",
+  "version": "1.0.0",
+  "description": "A polished Express and EJS landing page for the SME Assist AI chatbot project.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": [
+    "express",
+    "ejs",
+    "landing-page",
+    "ai-chatbot"
+  ],
+  "author": "C240 Project Team",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  }
+}

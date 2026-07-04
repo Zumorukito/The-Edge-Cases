@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SME Assist AI | Chatbot Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="demo-page">
+    <section class="container demo-section">
+      <div class="demo-intro">
+        <p class="section-label">Demo</p>
+        <h1>Chatbot Demo</h1>
+        <p>This is a simple front-end simulation of how the chatbot could respond to common customer questions.</p>
+      </div>
+
+      <div class="demo-grid">
+        <div class="demo-card">
+          <div class="chat-window" id="chat-window">
+            <div class="message bot">
+              <span>Bot:</span>
+              <p>Hello! I can help with opening hours, pricing, bookings, and order updates. Try typing one of those keywords.</p>
+            </div>
+          </div>
+
+          <form id="chat-form" class="chat-form">
+            <input id="chat-input" type="text" placeholder="Ask a question..." autocomplete="off" />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+
+        <div class="demo-card placeholder-card">
+          <h3><i class="fa-solid fa-puzzle-piece"></i> Chatbot integration coming soon</h3>
+          <p>This area is ready for the Botpress or n8n chatbot embed from your teammate later.</p>
+          <!-- Botpress or n8n chatbot embed code will be added here by chatbot teammate -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/chatbot-demo.js"></script>
+</body>
+</html>
