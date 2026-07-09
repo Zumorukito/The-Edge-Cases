@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | SME Assist AI</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <section class="section checkout-page">
+      <div class="container checkout-grid">
+        <div class="checkout-summary">
+          <p class="section-label">Order Summary</p>
+          <h1>Checkout</h1>
+          <div class="checkout-progress" aria-label="Checkout progress">
+            <div class="progress-step active">Details</div>
+            <div class="progress-step active">Payment</div>
+            <div class="progress-step">Confirmation</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-header">
+              <h2><%= plan %></h2>
+              <span class="prototype-pill">Prototype / Demo</span>
+            </div>
+            <div class="summary-row"><span>Package</span><strong><%= plan %></strong></div>
+            <div class="summary-row"><span>Price</span><strong>$<%= price %></strong></div>
+            <div class="summary-row total-row"><span>Total amount</span><strong>$<%= price %></strong></div>
+            <p class="summary-note">Prototype/demo purchase only</p>
+            <div class="trust-badges">
+              <span class="trust-badge">Secure demo checkout</span>
+              <span class="trust-badge">No real payment charged</span>
+              <span class="trust-badge">Prototype order only</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="checkout-form" action="/checkout" method="POST">
+          <% if (error) { %>
+            <div class="form-error"><%= error %></div>
+          <% } %>
+
+          <input type="hidden" name="plan" value="<%= plan %>" />
+          <input type="hidden" name="price" value="<%= price %>" />
+
+          <div class="form-card">
+            <h3>Business Details</h3>
+            <div class="form-grid">
+              <label>
+                <span>Business name</span>
+                <input type="text" name="businessName" required />
+              </label>
+              <label>
+                <span>Contact person name</span>
+                <input type="text" name="contactName" required />
+              </label>
+              <label>
+                <span>Email address</span>
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                <span>Phone number</span>
+                <input type="tel" name="phone" required />
+              </label>
+              <label>
+                <span>Business type</span>
+                <select name="businessType" required>
+                  <option value="">Select one</option>
+                  <option>Cafe / Restaurant</option>
+                  <option>Retail Shop</option>
+                  <option>Tuition Centre</option>
+                  <option>Online Seller</option>
+                  <option>Service Business</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>Chatbot Requirements</h3>
+            <label>
+              <span>Preferred chatbot type</span>
+              <select name="chatbotType" required>
+                <option value="">Select one</option>
+                <option>Botpress</option>
+                <option>Telegram Bot</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>
+              <span>What questions should your chatbot answer?</span>
+              <textarea name="requirements" rows="4" required></textarea>
+            </label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="features" value="Opening hours" /> Opening hours</label>
+              <label><input type="checkbox" name="features" value="Pricing" /> Pricing</label>
+              <label><input type="checkbox" name="features" value="Booking enquiries" /> Booking enquiries</label>
+              <label><input type="checkbox" name="features" value="Order status" /> Order status</label>
+              <label><input type="checkbox" name="features" value="Product information" /> Product information</label>
+              <label><input type="checkbox" name="features" value="Human handoff" /> Human handoff</label>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>Payment Method</h3>
+            <div class="payment-shell">
+              <div class="payment-card-preview">
+                <div class="payment-card-top">
+                  <span class="section-label">Secure demo checkout</span>
+                  <span class="payment-chip">Prototype</span>
+                </div>
+                <div class="payment-card-number">•••• •••• •••• 4242</div>
+                <div class="payment-card-meta">
+                  <span>Demo card holder</span>
+                  <span>12/30</span>
+                </div>
+              </div>
+
+              <p class="payment-warning">This is a fake payment page for testing only. Do not enter real payment details.</p>
+
+              <div class="payment-options">
+                <label><input type="radio" name="paymentMethod" value="demo-card" checked /> Demo Card</label>
+                <label><input type="radio" name="paymentMethod" value="paynow" /> PayNow Simulation</label>
+                <label><input type="radio" name="paymentMethod" value="bank" /> Bank Transfer Simulation</label>
+              </div>
+
+              <div class="demo-card-fields">
+                <label>
+                  <span>Demo card name</span>
+                  <input type="text" name="cardName" placeholder="Jane Doe" />
+                </label>
+                <label>
+                  <span>Demo card number</span>
+                  <input type="text" name="cardNumber" placeholder="4242 4242 4242 4242" />
+                </label>
+                <label>
+                  <span>Expiry</span>
+                  <input type="text" name="expiry" placeholder="12/30" />
+                </label>
+                <label>
+                  <span>CVV</span>
+                  <input type="text" name="cvv" placeholder="123" />
+                </label>
+              </div>
+
+              <p class="payment-note">After the demo payment is accepted, our team will email you the full bot flow and setup instructions.</p>
+              <div class="processing-state" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary full-width" type="submit">Complete Fake Payment</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/purchase-flow.js"></script>
+<script src="/js/site-animations.js"></script>
+</body>
+</html>

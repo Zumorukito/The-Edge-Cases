@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SME Assist AI | Chatbot Demo</title>
+  <title>Edge Cases | Chatbot Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
@@ -18,27 +18,28 @@
       <div class="demo-intro">
         <p class="section-label">Demo</p>
         <h1>Chatbot Demo</h1>
-        <p>This is a simple front-end simulation of how the chatbot could respond to common customer questions.</p>
+        <p>This is a frontend chatbot simulation for presentation. The real AI chatbot will be integrated separately by the chatbot teammate.</p>
       </div>
 
       <div class="demo-grid">
         <div class="demo-card">
-          <div class="chat-window" id="chat-window">
-            <div class="message bot">
-              <span>Bot:</span>
-              <p>Hello! I can help with opening hours, pricing, bookings, and order updates. Try typing one of those keywords.</p>
+          <div class="demo-chat-shell">
+            <div class="chat-header">
+              <h3>SME Assist AI Demo</h3>
+              <span class="status-pill">Live Botpress demo</span>
             </div>
+            <iframe
+              src="https://cdn.botpress.cloud/webchat/v3.6/shareable.html?configUrl=https://files.bpcontent.cloud/2026/05/12/03/20260512033201-3OY9U2WE.json"
+              title="SME Assist AI Botpress demo"
+              class="botpress-demo-iframe"
+              loading="lazy"
+            ></iframe>
           </div>
-
-          <form id="chat-form" class="chat-form">
-            <input id="chat-input" type="text" placeholder="Ask a question..." autocomplete="off" />
-            <button type="submit">Send</button>
-          </form>
         </div>
 
         <div class="demo-card placeholder-card">
-          <h3><i class="fa-solid fa-puzzle-piece"></i> Chatbot integration coming soon</h3>
-          <p>This area is ready for the Botpress or n8n chatbot embed from your teammate later.</p>
+          <h3><i class="fa-solid fa-rocket"></i> Live chatbot integration</h3>
+          <p>This page now shows the Botpress chatbot directly for presentation purposes.</p>
           <!-- Botpress or n8n chatbot embed code will be added here by chatbot teammate -->
         </div>
       </div>
@@ -48,5 +49,6 @@
   <%- include('partials/footer') %>
 
   <script src="/js/chatbot-demo.js"></script>
+  <script src="/js/site-animations.js"></script>
 </body>
 </html>

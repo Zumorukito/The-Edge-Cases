@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Purchase Successful | SME Assist AI</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <section class="section">
+      <div class="container success-card receipt-card">
+        <p class="section-label">Receipt</p>
+        <h1>Payment completed successfully.</h1>
+        <p class="success-package">Selected package: <strong><%= plan %></strong></p>
+
+        <div class="receipt-block">
+          <div class="receipt-row"><span>Order ID</span><strong><%= orderId %></strong></div>
+          <div class="receipt-row"><span>Amount paid</span><strong>$<%= price %></strong></div>
+          <div class="receipt-row"><span>Status</span><strong>Demo payment completed</strong></div>
+        </div>
+
+        <p class="success-email">Your request is now queued. We will send the full bot flow to <strong><%= email || 'your email address' %></strong> after review.</p>
+
+        <div class="success-steps">
+          <h3>Next steps for chatbot delivery</h3>
+          <ol>
+            <li>We review your business requirements</li>
+            <li>Our team prepares the Botpress or Telegram flow</li>
+            <li>You receive the full bot flow by email</li>
+            <li>The chatbot can be embedded into your website later</li>
+          </ol>
+        </div>
+
+        <a class="btn btn-primary" href="/">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

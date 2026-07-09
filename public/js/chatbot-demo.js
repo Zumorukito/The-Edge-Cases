@@ -1,38 +1,39 @@
 const chatForm = document.getElementById('chat-form');
 const chatInput = document.getElementById('chat-input');
-const chatWindow = document.getElementById('chat-window');
+const chatMessages = document.getElementById('chat-messages');
+const quickButtons = document.querySelectorAll('.quick-btn');
 
 function addMessage(text, sender) {
   const message = document.createElement('div');
   message.className = `message ${sender}`;
-  message.innerHTML = `<span>${sender === 'bot' ? 'Bot' : 'You'}:</span><p>${text}</p>`;
-  chatWindow.appendChild(message);
-  chatWindow.scrollTop = chatWindow.scrollHeight;
+  message.textContent = text;
+  chatMessages.appendChild(message);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 function getReply(message) {
   const text = message.toLowerCase();
 
   if (text.includes('hours') || text.includes('open')) {
-    return 'Our opening hours are Monday to Saturday, 9:00 AM to 9:00 PM.';
+    return 'We are open from 10 AM to 9 PM daily. Would you like to make a booking?';
   }
 
-  if (text.includes('price') || text.includes('pricing')) {
-    return 'Our service packages start from SGD 99 per month. We can also offer a custom plan.';
+  if (text.includes('price') || text.includes('pricing') || text.includes('cost')) {
+    return 'Our prices depend on the service selected. I can show basic pricing or connect you to staff for a custom quote.';
   }
 
   if (text.includes('booking') || text.includes('book')) {
-    return 'You can make a booking by contacting our team through the booking form or WhatsApp.';
+    return 'Sure, I can help with booking enquiries. Please share your preferred date and time.';
   }
 
   if (text.includes('order')) {
-    return 'We can help with order updates. Please share your order number so we can check the status.';
+    return 'Please provide your order number and our staff can follow up on the order status.';
   }
 
-  return 'Thanks for your message. A human staff member can follow up with you shortly.';
+  return 'I may need human staff to follow up on this. Please leave your contact details.';
 }
 
-if (chatForm && chatInput && chatWindow) {
+if (chatForm && chatInput && chatMessages) {
   chatForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -41,11 +42,21 @@ if (chatForm && chatInput && chatWindow) {
       return;
     }
 
-    addMessage(userMessage, 'customer');
+    addMessage(userMessage, 'user');
     chatInput.value = '';
 
-    setTimeout(() => {
+    setTimeout(function () {
       addMessage(getReply(userMessage), 'bot');
     }, 500);
+  });
+
+  quickButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const message = button.getAttribute('data-message');
+      addMessage(message, 'user');
+      setTimeout(function () {
+        addMessage(getReply(message), 'bot');
+      }, 500);
+    });
   });
 }
